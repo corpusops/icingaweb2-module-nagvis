@@ -7,7 +7,7 @@ $section = $this->menuSection(N_('Maps'))
     ->setIcon('globe');
 
 $section->add($this->translate('NagVis'))
-    ->setUrl('nagvis/show/map');
+    ->setUrl('nagvis/frontend/nagvis-js/index.php?mod=Map&act=view&show=automap');
 
 $prio = 0;
 $restriction = RestrictionHelper::getRegex();
@@ -16,8 +16,8 @@ foreach (Config::module('nagvis')->getSection('menu') as $name => $caption) {
         continue;
     }
     $section->add($caption, array(
-        'url'           => 'nagvis/show/map',
-        'urlParameters' => array('map' => $name),
+        'url'           => 'nagvis/frontend/nagvis-js/index.php?mod=Map&act=view',
+        'urlParameters' => array('show' => $name),
         'priority'      => ++$prio
     ));
 }
